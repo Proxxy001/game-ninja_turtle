@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turtle Springboard Math Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="volume-panel">
+  <label for="volume-slider">🔊</label>
+  <input type="range" id="volume-slider" min="0" max="10" value="5" oninput="updateVolumeText()">
+  <span class="vol-text" id="vol-display">5</span>
+</div>
+
+<div id="game-container">
+  <div id="coco-logo">🍉🐞</div>
+
+  <div id="question-wrapper">
+    <div id="question"></div>
+  </div>
+  
+  <div id="levitating-board"></div>
+
+  <div id="turtle" class="idle-float">
+    <svg width="100" height="110" viewBox="0 0 120 130" style="overflow: visible;">
+      <ellipse cx="35" cy="110" rx="15" ry="25" fill="#44851c" stroke="#3b7816" stroke-width="3"/>
+      <ellipse cx="85" cy="110" rx="15" ry="25" fill="#44851c" stroke="#3b7816" stroke-width="3"/>
+      <ellipse cx="20" cy="65" rx="25" ry="12" fill="#84d936" stroke="#3b7816" stroke-width="3" transform="rotate(30 20 65)"/>
+      <ellipse cx="100" cy="65" rx="25" ry="12" fill="#84d936" stroke="#3b7816" stroke-width="3" transform="rotate(-30 100 65)"/>
+      <circle cx="60" cy="70" r="45" fill="#3b7816" />
+      <circle cx="60" cy="70" r="35" fill="#f4d03f" stroke="#e67e22" stroke-width="4"/>
+      <path d="M 32 55 L 88 55 M 26 70 L 94 70 M 32 85 L 88 85" stroke="#e67e22" stroke-width="3" opacity="0.6"/>
+      <ellipse cx="60" cy="30" rx="28" ry="24" fill="#84d936" stroke="#3b7816" stroke-width="3"/>
+      <circle cx="48" cy="25" r="7" fill="white" stroke="#3b7816" stroke-width="1.5"/>
+      <circle cx="50" cy="25" r="3.5" fill="black"/>
+      <circle cx="51.5" cy="23.5" r="1.5" fill="white"/> 
+      <circle cx="72" cy="25" r="7" fill="white" stroke="#3b7816" stroke-width="1.5"/>
+      <circle cx="70" cy="25" r="3.5" fill="black"/>
+      <circle cx="68.5" cy="23.5" r="1.5" fill="white"/> 
+      <circle cx="38" cy="35" r="5" fill="#ff7ca8" opacity="0.8"/>
+      <circle cx="82" cy="35" r="5" fill="#ff7ca8" opacity="0.8"/>
+      <path d="M 52 38 Q 60 45 68 38" fill="none" stroke="#3b7816" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </div>
+  
+  <div id="boards">
+    <div class="board-container">
+      <div class="board" onclick="chooseAnswer(0)" id="board-0"></div>
+      <div class="spring-coil"></div>
+    </div>
+    <div class="board-container">
+      <div class="board" onclick="chooseAnswer(1)" id="board-1"></div>
+      <div class="spring-coil"></div>
+    </div>
+    <div class="board-container">
+      <div class="board" onclick="chooseAnswer(2)" id="board-2"></div>
+      <div class="spring-coil"></div>
+    </div>
+    <div class="board-container">
+      <div class="board" onclick="chooseAnswer(3)" id="board-3"></div>
+      <div class="spring-coil"></div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
