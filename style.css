@@ -69,6 +69,28 @@ body {
   filter: drop-shadow(2px 2px 0px white);
 }
 
+/* --- Scoreboard --- */
+#scoreboard {
+  position: absolute;
+  top: 145px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  z-index: 30;
+}
+.score {
+  background: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 24px;
+  font-weight: 900;
+  border: 4px solid;
+}
+.score.right { border-color: #2ecc71; color: #27ae60; }
+.score.wrong { border-color: #ff4757; color: #d63031; }
+
 #question-wrapper {
   text-align: center;
   margin-top: 20px;
@@ -107,7 +129,7 @@ body {
 /* --- Levitating Platform --- */
 #levitating-board {
   position: absolute;
-  top: 220px;
+  top: 265px;
   left: 325px;
   width: 150px;
   height: 25px;
@@ -122,7 +144,7 @@ body {
 /* --- Front-Facing Turtle --- */
 #turtle {
   position: absolute;
-  top: 130px;
+  top: 175px;
   left: 350px;
   transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1), top 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 10;
@@ -172,12 +194,18 @@ body {
 .board-container:nth-child(3) .board { background: #ff6b81; border-bottom: 8px solid #d63031; } 
 .board-container:nth-child(4) .board { background: #1e90ff; border-bottom: 8px solid #0984e3; } 
 
+/* --- Realistic spring --- */
 .spring-coil {
-  width: 35px;
+  width: 46px;
   height: 40px;
-  background: repeating-linear-gradient(to bottom, #b2bec3, #b2bec3 5px, #636e72 5px, #636e72 10px);
-  border-radius: 4px;
-  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.6);
+  /* slanted metal wire repeated down the spring = coil look */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='10'%3E%3Cpath d='M3 9 L43 3' stroke='%23444b4f' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M3 8 L43 2' stroke='%23dfe6e9' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-y;
+  background-size: 46px 10px;
+  background-color: rgba(0,0,0,0.35); /* dark inside the coil */
+  border-radius: 6px;
+  transform-origin: bottom center;
+  filter: drop-shadow(0 4px 3px rgba(0,0,0,0.4));
 }
 
 .board:hover { transform: scale(1.1); }
@@ -208,6 +236,15 @@ body {
 @keyframes floatSync {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-15px); }
+}
+@keyframes pressSpring {
+  0%   { transform: scaleY(1); }
+  50%  { transform: scaleY(0.55) scaleX(1.12); }
+  100% { transform: scaleY(1); }
+}
+@keyframes pressBoard {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(14px); }
 }
 @keyframes snapBoard {
   0% { transform: translateY(0) rotate(0); }
